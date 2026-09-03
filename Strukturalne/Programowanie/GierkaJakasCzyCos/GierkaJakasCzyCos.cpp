@@ -32,9 +32,9 @@ void mainGame()
 	char difficulty = 0;
 	std::cout << "------------------------------------------\n";
 	std::cout << "Podaj poziom trudnoœci:\n";
-	std::cout << "£atwy: 1\n";
-	std::cout << "Œredni: 2\n";
-	std::cout << "Trudny: 3\n";
+	std::cout << "£atwy: 1  (1 - 100)\n";
+	std::cout << "Œredni: 2  (1 - 250)\n";
+	std::cout << "Trudny: 3  (1 - 500)\n";
 	std::cout << "------------------------------------------\n";
 	std::cin >> difficulty;
 	switch (difficulty)
@@ -43,7 +43,7 @@ void mainGame()
 		UPPER_RANGE = 100;
 		break;
 	case '2':
-		UPPER_RANGE = 200;
+		UPPER_RANGE = 250;
 		break;
 	case '3':
 		UPPER_RANGE = 500;
