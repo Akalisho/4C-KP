@@ -138,6 +138,8 @@ void mainGame()
 
 	system("cls");
 
+	Sleep(20);
+
 	if (currentLives < 1)
 	{
 		std::cout << "------------------------------------------\n";

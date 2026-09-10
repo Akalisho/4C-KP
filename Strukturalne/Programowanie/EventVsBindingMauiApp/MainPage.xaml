@@ -1,10 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="EventVsBindingMauiApp.MainPage">
+             x:Class="EventVsBindingMauiApp.MainPage"
+             x:Name="thisPage">
 
     <StackLayout>
-        <Slider Maximum="360"
+        <Slider x:Name="rotationSlider"
+                Maximum="360"
                 MaximumTrackColor="Bisque"
                 Minimum="0"
                 MinimumTrackColor="AliceBlue"
@@ -15,7 +17,24 @@
                HorizontalOptions="Center"
                Rotation="90"
                Text="To jest label:"/>
+        <Label Margin="40"
+               HorizontalOptions="Center"
+               Rotation="{Binding Source={x:Reference rotationSlider}, Path=Value}"
+               Text="{Binding Source={x:Reference rotationSlider}, Path=Value}"/>
+        <Label Margin="40"
+               HorizontalOptions="Center"
+               BindingContext="{x:Reference rotationSlider}"
+               Rotation="{Binding Path=Value}"
+               Text="{Binding Path=Value}"/>
+        <Label Text="Podaj komunikat:"/>
+        <Entry x:Name="entryLabel"/>
+        <Button Text="Pojaw sie" Clicked="Button_Clicked"/>
+        <Label x:Name="resultLabel"/>
 
+        <Label Text="Podaj komunikat"/>
+        <Entry Text="{Binding Message, Source={x:Reference thisPage}}"/>
+        <Button Text="Pojaw sie" Clicked="Button_Clicked_1"/>
+        <Label Text="{Binding ReturnMessage, Source={x:Reference thisPage}}"/>
     </StackLayout>
 
 </ContentPage>

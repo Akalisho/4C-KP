@@ -2,7 +2,6 @@
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
 
         public MainPage()
         {
@@ -16,6 +15,31 @@
                 rotationLabel.Rotation = slider.Value;
                 rotationLabel.Text = slider.Value.ToString();
             }
+        }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            resultLabel.Text = entryLabel.Text;
+            entryLabel.Text = "";
+        }
+
+        public string Message { get; set; }
+
+        private string returnMessage {  get; set; }
+
+        public string ReturnMessage
+        {
+            get { return returnMessage; }
+            set
+            {
+                returnMessage = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private void Button_Clicked_1(object sender, EventArgs e)
+        {
+            ReturnMessage = Message;
         }
     }
 }
