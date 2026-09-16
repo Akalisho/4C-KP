@@ -7,9 +7,11 @@
             InitializeComponent();
         }
 
-        public string Addition { get; set; }
+        public string AdditionFirstNumber { get; set; }
 
-        private string returnAddition { get; set; }
+        public string AdditionSecondNumber {  get; set; }
+
+        private string returnAddition;
 
         public string ReturnAddition
         {
@@ -37,19 +39,17 @@
                 resultLabel.Text = $"Podales nieprawidlowe dane.";
                 resultLabel.BackgroundColor = Colors.Red;
             }*/
-
-            if (int.TryParse(firstNumberEntry.Text, out int firstNumber)
-                && int.TryParse(secondNumberEntry.Text, out int secondNumber))
+            if (int.TryParse(AdditionFirstNumber, out int firstNumber)
+                && int.TryParse(AdditionSecondNumber, out int secondNumber))
             {
-                resultLabel.Text = $"Wynik dodawania to {firstNumber + secondNumber}";
+                ReturnAddition = $"Wynik dodawania to {firstNumber + secondNumber}";
                 resultLabel.BackgroundColor = Colors.Green;
             }
             else
             {
-                resultLabel.Text = $"Podales nieprawidlowe dane.";
+                ReturnAddition = $"Podales nieprawidlowe dane.";
                 resultLabel.BackgroundColor = Colors.Red;
             }
-
         }
     }
 }

@@ -13,13 +13,13 @@
                FontSize="20"
                Text="Podaj pierwszą liczbę:"/>
 
-        <Entry x:Name="firstNumberEntry"/>
+        <Entry x:Name="firstNumberEntry" Text="{Binding AdditionFirstNumber, Source={x:Reference thisPage}}"/>
         <StackLayout Orientation="Horizontal">
             <Label Text="Podaj drugą liczbę: " VerticalTextAlignment="Center"/>
-            <Entry BackgroundColor="Aqua" x:Name="secondNumberEntry"/>
+            <Entry BackgroundColor="Aqua" x:Name="secondNumberEntry" Text="{Binding AdditionSecondNumber, Source={x:Reference thisPage}}"/>
         </StackLayout>
         <Button Text="Oblicz" Clicked="Button_Clicked"/>
-        <Label x:Name="resultLabel"/>
+        <Label x:Name="resultLabel" Text="{Binding ReturnAddition, Source={x:Reference thisPage}}"/>
 
     </StackLayout>
 
