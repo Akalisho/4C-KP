@@ -48,7 +48,7 @@
             else
             {
                 ReturnAddition = $"Podales nieprawidlowe dane.";
-                resultLabel.BackgroundColor = Colors.Red;
+                resultLabel.BackgroundColor = Colors.Red; 
             }
         }
     }
