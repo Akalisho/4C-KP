@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="OrderCostCalculatorMauiApp.MainPage">
+             x:Class="OrderCostCalculatorMauiApp.MainPage"
+             x:Name="thisPage"
+             BindingContext="{x:Reference thisPage}">
 
     <ScrollView>
         <VerticalStackLayout
@@ -15,7 +17,8 @@
                      Value="{Binding StepperValue}"/>
             <Label Text="{Binding StepperValue}"/>
             <Switch IsToggled="{Binding IsOn}"/>
-            <Button Text="Oblicz" Clicked="Button_Clicked"/>
+            <Label Text="{Binding IsOn}"/>
+            <Button Text="Oblicz" Command="{Binding Calculate}"/>
             <Label Text="{Binding }"/>
         </VerticalStackLayout>
     </ScrollView>

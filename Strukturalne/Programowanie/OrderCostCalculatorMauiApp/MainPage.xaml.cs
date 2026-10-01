@@ -32,12 +32,6 @@ namespace OrderCostCalculatorMauiApp
     public partial class MainPage : ContentPage
     {
 
-        public MainPage()
-        {
-            InitializeComponent();
-
-        }
-
         private int stepperValue;
         public int StepperValue
         {
@@ -52,9 +46,11 @@ namespace OrderCostCalculatorMauiApp
             set { isOn = value; OnPropertyChanged(); }
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        public MainPage()
         {
-
+            InitializeComponent();
         }
+
+
     }
 }
