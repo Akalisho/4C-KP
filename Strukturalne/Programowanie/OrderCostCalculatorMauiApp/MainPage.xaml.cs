@@ -46,6 +46,32 @@ namespace OrderCostCalculatorMauiApp
             set { isOn = value; OnPropertyChanged(); }
         }
 
+        private double result;
+        public double Result
+        {
+            get { return result; }
+            set { result = value; OnPropertyChanged(); }
+        }
+
+        private Command calculate;
+        public Command Calculate
+        {
+            get
+            {
+                if (calculate == null)
+                    calculate = new Command(
+                        () =>
+                        {
+                            if (IsOn == true)
+                            {
+                                result = Entry.nazwaProd * Entry.cenaSztuk + 15;
+                            }
+                        }
+                        );
+                return calculate;
+            }
+        }
+
         public MainPage()
         {
             InitializeComponent();
