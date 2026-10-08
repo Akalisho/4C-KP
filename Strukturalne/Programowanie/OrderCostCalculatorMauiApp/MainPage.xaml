@@ -9,17 +9,19 @@
         <VerticalStackLayout
             Padding="30,0"
             Spacing="25">
-            <Entry Placeholder="Nazwa produktu:" x:Name="nazwaProd"/>
-            <Entry Placeholder="Cena za sztukę:" x:Name="cenaSztuk"/>
+            <Label Text="Nazwa produktu:" />
+            <Entry Placeholder="Nazwa produktu:"/>
+            <Label Text="Cena za sztukę (zł):" />
+            <Entry Placeholder="Cena za sztukę:"/>
             <Stepper Increment="1"
                      Minimum="1"
                      Maximum="10"
-                     Value="{Binding StepperValue}"/>
-            <Label Text="{Binding StepperValue}"/>
-            <Switch IsToggled="{Binding IsOn}"/>
-            <Label Text="{Binding IsOn}"/>
-            <Button Text="Oblicz" Command="{Binding Calculate}"/>
-            <Label Text="{Binding }"/>
+                     Value="{Binding LiczbaSztuk}"/>
+            <Label Text="{Binding LiczbaSztuk}"/>
+            <Switch IsToggled="{Binding CzyEkspresowa}"/>
+            <Label Text="Dostawa ekspresowa (+15 zł)" VerticalTextAlignment="Center" />
+            <Button Text="Oblicz" Command="{Binding ObliczCommand}"/>
+            <Label Text="{Binding Wynik}"/>
         </VerticalStackLayout>
     </ScrollView>
 

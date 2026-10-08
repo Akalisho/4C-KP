@@ -27,56 +27,77 @@ Wynik: 375 zł
 
 
 */
+using System.ComponentModel;
+using System.Windows.Input;
+
 namespace OrderCostCalculatorMauiApp
 {
     public partial class MainPage : ContentPage
     {
 
-        private int stepperValue;
-        public int StepperValue
+        private string nazwaProduktu;
+        public string NazwaProduktu
         {
-            get { return stepperValue; }
-            set { stepperValue = value; OnPropertyChanged(); }
+            get => nazwaProduktu;
+            set { nazwaProduktu = value; OnPropertyChanged(nameof(NazwaProduktu)); }
         }
 
-        private bool isOn;
-        public bool IsOn
+        private double cenaZaSztuke;
+        public double CenaZaSztuke
         {
-            get { return isOn; }
-            set { isOn = value; OnPropertyChanged(); }
+            get => cenaZaSztuke;
+            set { cenaZaSztuke = value; OnPropertyChanged(nameof(CenaZaSztuke)); }
         }
 
-        private double result;
-        public double Result
+        private double liczbaSztuk;
+        public double LiczbaSztuk
         {
-            get { return result; }
-            set { result = value; OnPropertyChanged(); }
+            get => liczbaSztuk;
+            set { liczbaSztuk = value; OnPropertyChanged(nameof(LiczbaSztuk)); }
         }
 
-        private Command calculate;
-        public Command Calculate
+        private bool czyEkspresowa;
+        public bool CzyEkspresowa
         {
-            get
-            {
-                if (calculate == null)
-                    calculate = new Command(
-                        () =>
-                        {
-                            if (IsOn == true)
-                            {
-                                result = Entry.nazwaProd * Entry.cenaSztuk + 15;
-                            }
-                        }
-                        );
-                return calculate;
-            }
+            get => czyEkspresowa;
+            set { czyEkspresowa = value; OnPropertyChanged(nameof(CzyEkspresowa)); }
         }
+
+        private string wynik;
+        public string Wynik
+        {
+            get => wynik;
+            set { wynik = value; OnPropertyChanged(nameof(Wynik)); }
+        }
+
+        public ICommand ObliczCommand { get;}
 
         public MainPage()
         {
+            BindingContext = this;
+            ObliczCommand = new Command(WykonajObliczenia);
             InitializeComponent();
+
+
         }
 
+        private async void WykonajObliczenia()
+        {
+                double koszt = cenaZaSztuke * LiczbaSztuk;
 
+                if (CzyEkspresowa)
+                {
+                    koszt += 15;
+                }
+
+                string produkt = string.IsNullOrWhiteSpace(NazwaProduktu) ? "Produkt" : NazwaProduktu;
+                Wynik = $"Produkt: {produkt}\nCena końcowa: {koszt} zł"; 
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }
